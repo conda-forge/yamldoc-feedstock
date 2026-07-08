@@ -1,13 +1,13 @@
 {% set name = "yamldoc" %}
-{% set version = "0.1.6" %}
+{% set version = "0.3.7" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/yamldoc-{{ version }}.tar.gz
-  sha256: eb169566e8c1cf732b37b15537af05ce84df37372cdf496986501aa532b7d273
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/yamldoc-{{ version }}.tar.gz
+  sha256: 491d9c7328be7bafd971aba592525d093998a91d2e08916548a8bf18c6f035bc
 
 build:
   entry_points:
@@ -18,10 +18,10 @@ build:
 
 requirements:
   host:
-    - python >=3.6
+    - python {{ python_min }}
     - pip
   run:
-    - python >=3.6
+    - python >={{ python_min }}
 
 test:
   imports:
@@ -31,6 +31,7 @@ test:
     - yamldoc --help
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/Chris1221/yamldoc
