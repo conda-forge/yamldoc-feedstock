@@ -1,5 +1,5 @@
 {% set name = "yamldoc" %}
-{% set version = "0.3.7" %}
+{% set version = "0.3.8" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/yamldoc-{{ version }}.tar.gz
-  sha256: 491d9c7328be7bafd971aba592525d093998a91d2e08916548a8bf18c6f035bc
+  sha256: 4471fab13a2f1cc08211ae33f74180715cc2cb5a91a19a7204d6fdb74c455a56
 
 build:
   entry_points:
