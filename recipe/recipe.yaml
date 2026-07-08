@@ -1,0 +1,54 @@
+schema_version: 1
+
+context:
+  name: yamldoc
+  version: "0.4.1"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/yamldoc-${{ version }}.tar.gz
+  sha256: 9f97f113f541d7555af94b271e42b124a5273b485543db6a18058760d3bee5e9
+
+build:
+  number: 0
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv
+  python:
+    entry_points:
+      - yamldoc = yamldoc:cli
+
+requirements:
+  host:
+    - python ${{ python_min }}.*
+    - pip
+    - setuptools
+  run:
+    - python >=${{ python_min }}
+
+tests:
+  - python:
+      imports:
+        - yamldoc
+      pip_check: true
+      python_version:
+        - ${{ python_min }}.*
+        - "*"
+  - requirements:
+      run:
+        - python ${{ python_min }}.*
+    script:
+      - yamldoc --help
+
+about:
+  summary: Documentation engine for YAML.
+  license_file: LICENSE
+  license: MIT
+  homepage: https://github.com/Chris1221/yamldoc
+  documentation: https://chrisbcole.me/yamldoc/
+
+extra:
+  recipe-maintainers:
+    - thewchan
